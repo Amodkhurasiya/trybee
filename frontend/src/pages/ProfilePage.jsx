@@ -231,7 +231,16 @@ const ProfilePage = () => {
               <div className="flex items-center justify-between">
                 <div className="flex items-center">
                   {user?.avatarUrl ? (
-                    <img src={user.avatarUrl} alt="Avatar" className="w-14 h-14 rounded-full object-cover border border-gray-200" />
+                    //<img src={user.avatarUrl} alt="Avatar" className="w-14 h-14 rounded-full object-cover border border-gray-200" />
+      <img
+  src={
+    user.avatarUrl?.startsWith('http')
+      ? user.avatarUrl
+      : `${import.meta.env.VITE_API_URL.replace(/\/$/, '')}${user.avatarUrl}`
+  }
+  alt="Avatar"
+  className="w-14 h-14 rounded-full object-cover border border-gray-200"
+/>
                   ) : (
                     <div className="w-14 h-14 rounded-full bg-gray-200 flex items-center justify-center text-lg font-semibold text-gray-600">
                       {user?.firstName?.charAt(0) || user?.email?.charAt(0) || 'U'}

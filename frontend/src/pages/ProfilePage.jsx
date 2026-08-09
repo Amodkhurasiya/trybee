@@ -400,9 +400,9 @@ const ProfilePage = () => {
             </form>
           </div>
         </div>
-
+/*
         {/* Avatar Picker Modal */}
-        {showAvatarPicker && (
+         { /* showAvatarPicker && (
           <div className="fixed inset-0 bg-black bg-opacity-40 flex items-center justify-center z-50">
             <div className="bg-white rounded-lg shadow-xl w-full max-w-xl">
               <div className="px-5 py-4 border-b flex items-center justify-between">
@@ -435,7 +435,76 @@ const ProfilePage = () => {
               </div>
             </div>
           </div>
-        )}
+        ) */} 
+         {/* Avatar Picker Modal */}
+{showAvatarPicker && (
+  <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50">
+    <div className="bg-white rounded-lg shadow-xl w-full max-w-md p-6">
+
+      {/* Header */}
+      <div className="flex items-center justify-between mb-6">
+        <h2 className="text-lg font-semibold text-gray-900">
+          Choose an Avatar
+        </h2>
+
+        <button
+          type="button"
+          className="text-gray-500 hover:text-gray-700 text-xl"
+          onClick={() => setShowAvatarPicker(false)}
+        >
+          ✕
+        </button>
+      </div>
+
+      {/* Avatar List */}
+      {avatars.length === 0 ? (
+        <div className="text-center py-8 text-gray-500">
+          No avatars available.
+        </div>
+      ) : (
+        <div className="grid grid-cols-3 gap-4">
+          {avatars.map((a) => (
+            <button
+              type="button"
+              key={a.id}
+              onClick={() => handleAvatarUpdate(a.id)}
+              disabled={updateLoading}
+              className={`rounded-lg p-1 border hover:shadow transition ${
+                user?.avatarUrl === a.url
+                  ? 'border-[#ebb665] border-2'
+                  : 'border-gray-200'
+              }`}
+              title={a.name}
+            >
+              <img
+                src={
+                  a.url?.startsWith('http')
+                    ? a.url
+                    : `https://trybee.onrender.com${a.url}`
+                }
+                alt={a.name}
+                className="w-20 h-20 rounded-lg object-cover mx-auto"
+              />
+            </button>
+          ))}
+        </div>
+      )}
+
+      {/* Close Button */}
+      <div className="flex justify-end mt-6">
+        <button
+          type="button"
+          className="px-3 py-2 text-sm bg-gray-100 rounded-md hover:bg-gray-200"
+          onClick={() => setShowAvatarPicker(false)}
+        >
+          Close
+        </button>
+      </div>
+
+    </div>
+  </div>
+)}
+        
 
         {/* Account Information */}
         <div className="mt-8 bg-white shadow rounded-lg">

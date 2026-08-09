@@ -1,0 +1,231 @@
+@import "tailwindcss";
+
+/* Custom styles for Trybee E-commerce Platform */
+/* Minimal reset to avoid conflicts with Tailwind */
+body {
+  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  line-height: 1.6;
+  color: #1a202c;
+  background-color: #ffffff;
+}
+
+/* Gilroy font-face (expects files in /public/fonts). Falls back to Inter if unavailable. */
+@font-face {
+  font-family: 'Gilroy';
+  /* Prefer locally installed Gilroy, then serve from /public/fonts (TTF) */
+  src: local('Gilroy Regular'), local('Gilroy-Regular'), local('Gilroy'),
+    url('/fonts/Gilroy-Light.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Gilroy';
+  src: local('Gilroy Medium'), local('Gilroy-Medium'), local('Gilroy'),
+    url('/fonts/Gilroy-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Gilroy';
+  src: local('Gilroy Bold'), local('Gilroy-Bold'), local('Gilroy'),
+    url('/fonts/Gilroy-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Utility: apply Gilroy font where needed */
+.font-gilroy {
+  font-family: 'Gilroy', 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+}
+
+/* Focus styles for accessibility */
+:focus {
+  outline: 2px solid #4f46e5;
+  outline-offset: 2px;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Animation classes */
+.fade-in {
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Toast animation */
+.animate-slide-in-right {
+  animation: slideInRight 0.3s ease-out;
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Custom utility classes for better alignment */
+/* Removed .container-custom to avoid conflicts with Tailwind's container utilities */
+
+/* Text truncation utility */
+.line-clamp-2 {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+}
+
+.line-clamp-3 {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+}
+
+/* Custom button styles using regular CSS */
+.btn-primary {
+  background-color: rgb(79 70 229);
+  color: white;
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  transition: background-color 0.2s ease-in-out;
+  border: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}
+
+.btn-primary:hover {
+  background-color: rgb(67 56 202);
+}
+
+.btn-primary:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgb(255 255 255), 0 0 0 4px rgb(79 70 229);
+}
+
+.btn-secondary {
+  background-color: rgb(229 231 235);
+  color: rgb(31 41 55);
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  transition: background-color 0.2s ease-in-out;
+  border: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}
+
+.btn-secondary:hover {
+  background-color: rgb(209 213 219);
+}
+
+.btn-secondary:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgb(255 255 255), 0 0 0 4px rgb(107 114 128);
+}
+
+.btn-outline {
+  background-color: transparent;
+  color: rgb(55 65 81);
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  transition: border-color 0.2s ease-in-out;
+  border: 1px solid rgb(209 213 219);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}
+
+.btn-outline:hover {
+  border-color: rgb(156 163 175);
+}
+
+.btn-outline:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgb(255 255 255), 0 0 0 4px rgb(107 114 128);
+}
+
+/* Custom aspect ratio utilities with specific naming to avoid Tailwind conflicts */
+.custom-aspect-16-9 {
+  position: relative;
+  padding-bottom: calc(9 / 16 * 100%);
+}
+
+.custom-aspect-16-9 > * {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.custom-aspect-square {
+  position: relative;
+  padding-bottom: 100%;
+}
+
+.custom-aspect-square > * {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+/* Grid alignment fixes */
+.grid-auto-fit {
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+.grid-auto-fill {
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+}

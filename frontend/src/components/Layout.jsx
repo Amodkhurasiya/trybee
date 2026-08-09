@@ -131,7 +131,7 @@ const Layout = () => {
               </button>
 
               {/* User menu */}
-              {isAuthenticated ? (
+              {/*isAuthenticated ? (
                 <div className="relative group">
                   <button className="flex items-center text-white">
                     {user?.avatarUrl ? (
@@ -153,7 +153,49 @@ const Layout = () => {
                     <svg className="ml-1 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                     </svg>
-                  </button>
+                  </button> */
+
+                {/* User menu */}
+{isAuthenticated ? (
+  <div className="relative group">
+    <button className="flex items-center text-white">
+      {user?.avatarUrl ? (
+        <img
+          src={
+            user.avatarUrl.startsWith('http')
+              ? user.avatarUrl
+              : `https://trybee.onrender.com${user.avatarUrl}`
+          }
+          alt="Avatar"
+          className="w-8 h-8 rounded-full object-cover border border-gray-200"
+        />
+      ) : (
+        <div
+          className="w-8 h-8 rounded-full flex items-center justify-center"
+          style={{ backgroundColor: '#ffffff', color: '#065f46' }}
+        >
+          <span className="text-sm font-medium">
+            {user?.firstName?.charAt(0) ||
+              user?.email?.charAt(0) ||
+              'U'}
+          </span>
+        </div>
+      )}
+
+      <svg
+        className="ml-1 w-4 h-4"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth={2}
+          d="M19 9l-7 7-7-7"
+        />
+      </svg>
+    </button>
 
                   {/* Dropdown menu */}
                   <div
